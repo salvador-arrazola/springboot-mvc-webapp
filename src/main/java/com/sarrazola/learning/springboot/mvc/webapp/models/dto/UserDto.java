@@ -1,19 +1,13 @@
 package com.sarrazola.learning.springboot.mvc.webapp.models.dto;
 
-// import com.sarrazola.learning.springboot.mvc.webapp.models.User;
+import com.sarrazola.learning.springboot.mvc.webapp.models.User;
 
 public class UserDto {
 
   private String greeting;
-  // private User user;
-  private String name;
+  private User user;
 
   public UserDto() { }
-
-  // public UserDto(String greeting, User user) {
-  //   this.greeting = greeting;
-  //   this.user = user;
-  // }
 
   public String getGreeting() {
     return greeting;
@@ -23,20 +17,12 @@ public class UserDto {
     this.greeting = greeting;
   }
 
-  // public User getUser() {
-  //   return user;
-  // }
-  
-  // public void setUser(User user) {
-  //   this.user = user;
-  // }
-
-  public String getName() {
-    return name;
+  public User getUser() {
+    return user;
   }
-
-  public void setName(String name) {
-    this.name = name;
-  }  
+  
+  public void setUser(User user) {
+    this.user = user;
+  }
 
 }

@@ -1,5 +1,9 @@
 package com.sarrazola.learning.springboot.mvc.webapp.controllers;
 
+import java.util.ArrayList;
+// import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,30 +15,29 @@ import com.sarrazola.learning.springboot.mvc.webapp.models.dto.UserDto;
 @RequestMapping("/api")
 public class UserRestController {
 
-  // Using a DTO to handle the response:
   @GetMapping("/details")
   public UserDto details() {
     User user = new User("Guaripolo", "Arrazola");
     UserDto userDto = new UserDto();
     userDto.setGreeting("Hello World Spring Boot !!!");
-    userDto.setName(user.getName() +" "+ user.getLastname());
+    userDto.setUser(user);
     return userDto;
   }
-  // @GetMapping("/details")
-  // public UserDto details() {
-  //   User user = new User("Guaripolo", "Arrazola");
-  //   UserDto userDto = new UserDto("Hello World Spring Boot !!!", user);
-  //   return userDto;
-  // }
 
-  // Using Map to handle the response:
-  // @GetMapping("/details")
-  // public Map<String, Object> details() {
-  //   User user = new User("Guaripolo", "Arrazola");
-  //   Map<String, Object> responseBody = new HashMap<>();
-  //   responseBody.put("greeting", "Hello World Spring Boot !!!");
-  //   responseBody.put("user", user);
-  //   return responseBody;
-  // }
+  @GetMapping("/list")
+  public List<User> list() {
+    List<User> users = new ArrayList<>();
+    users.add(new User("Guaripolo", "Arrazola"));
+    users.add(new User("Guachimingo", "Torres"));
+    users.add(new User("Patana", "Murillo"));
+
+    // Using Helper "Arrays":
+    // User user1 = new User("Guaripolo", "Arrazola");
+    // User user2 = new User("Guachimingo", "Torres");
+    // User user3 = new User("Patana", "Murillo");
+    // List<User> users = Arrays.asList(user1, user2, user3);
+    
+    return users;
+  }
 
 }
