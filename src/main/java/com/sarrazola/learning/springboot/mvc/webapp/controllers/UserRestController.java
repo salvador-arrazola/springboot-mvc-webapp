@@ -15,9 +15,17 @@ public class UserRestController {
   @GetMapping("/details")
   public UserDto details() {
     User user = new User("Guaripolo", "Arrazola");
-    UserDto userDto = new UserDto("Hello World Spring Boot !!!", user);
+    UserDto userDto = new UserDto();
+    userDto.setGreeting("Hello World Spring Boot !!!");
+    userDto.setName(user.getName() +" "+ user.getLastname());
     return userDto;
   }
+  // @GetMapping("/details")
+  // public UserDto details() {
+  //   User user = new User("Guaripolo", "Arrazola");
+  //   UserDto userDto = new UserDto("Hello World Spring Boot !!!", user);
+  //   return userDto;
+  // }
 
   // Using Map to handle the response:
   // @GetMapping("/details")
