@@ -8,34 +8,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sarrazola.learning.springboot.mvc.webapp.models.User;
+import com.sarrazola.learning.springboot.mvc.webapp.models.dto.UserDto;
 
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
 
+  // Using a DTO to handle the response:
   @GetMapping("/details")
-  public Map<String, Object> details() {
+  public UserDto details() {
     User user = new User("Guaripolo", "Arrazola");
-    Map<String, Object> responseBody = new HashMap<>();
-    responseBody.put("greeting", "Hello World Spring Boot !!!");
-    responseBody.put("user", user);
-    return responseBody;
+    UserDto userDto = new UserDto("Hello World Spring Boot !!!", user);
+    return userDto;
   }
 
-// Same result by using Controller + ResponseBody:
-// @Controller
-// @RequestMapping("/api")
-// public class UserRestController {
-
-//   @GetMapping("/details2")
-//   @ResponseBody
-//   public Map<String, Object> details() {
-//     Map<String, Object> responseBody = new HashMap<>();
-//     responseBody.put("greeting", "Hello World Spring Boot !!!");
-//     responseBody.put("name", "Guaripolo");
-//     responseBody.put("lastname", "Arrazola");
-//     responseBody.put("title", "Welcome Page");
-//     return responseBody;
-//   }
+  // Using Map to handle the response:
+  // @GetMapping("/details")
+  // public Map<String, Object> details() {
+  //   User user = new User("Guaripolo", "Arrazola");
+  //   Map<String, Object> responseBody = new HashMap<>();
+  //   responseBody.put("greeting", "Hello World Spring Boot !!!");
+  //   responseBody.put("user", user);
+  //   return responseBody;
+  // }
 
 }
