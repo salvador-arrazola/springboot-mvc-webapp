@@ -11,10 +11,15 @@ public class UserController {
 
   @GetMapping("/details")
   public String details(Model model) {
-    User user = new User("Guaripolo", "Arrazola");
+
+    User user = new User();
+    user.setName("Guaripolo");
+    user.setLastname("Arrazola");
+
     model.addAttribute("title", "Welcome Page");
     model.addAttribute("greeting", "Hello World Spring Boot !!!");
     model.addAttribute("user", user);
+
     return "details";
   }
 
