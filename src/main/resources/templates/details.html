@@ -16,6 +16,8 @@
   <!-- <h3 th:if="${user.email != null}" th:text="${'Email: ' + user.email}"></h3> -->
   <!-- Shorter version. -->
   <h3 th:if="${user.email}" th:text="${'Email: ' + user.email}"></h3>
-  
+  <!-- Show message due email is not defined (else alternative). -->
+  <h3 th:if="${user.email == null}" th:text="${'Email not set.'}"></h3>
+
 </body>
 </html>
