@@ -7,6 +7,15 @@
 </head>
 <body>
   <h1 th:text="${greeting}">Greeting</h1>
+
   <h2 th:text="${'Welcome ' + user.name +' '+ user.lastname +' !!!'}"></h2>
+
+  <!-- Shows "Email: null" when email is not defined. -->
+  <!-- <h3 th:text="${'Email: ' + user.email}"></h3> -->
+  <!-- Use Thymeleaf "if" to validate if email is defined. -->
+  <!-- <h3 th:if="${user.email != null}" th:text="${'Email: ' + user.email}"></h3> -->
+  <!-- Shorter version. -->
+  <h3 th:if="${user.email}" th:text="${'Email: ' + user.email}"></h3>
+  
 </body>
 </html>
