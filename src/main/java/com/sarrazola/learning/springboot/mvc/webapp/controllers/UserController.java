@@ -15,6 +15,7 @@ public class UserController {
     User user = new User();
     user.setName("Guaripolo");
     user.setLastname("Arrazola");
+    user.setEmail("guaripolo@gmail.com");
 
     model.addAttribute("title", "Welcome Page");
     model.addAttribute("greeting", "Hello World Spring Boot !!!");
