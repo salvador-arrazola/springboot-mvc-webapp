@@ -34,24 +34,11 @@ public class UserController {
 
     model.addAttribute("title", "Users List:");
 
-    User user1 = new User();
-    user1.setName("Guaripolo");
-    user1.setLastname("Arrazola");
-    user1.setEmail("guaripoloa@gmail.com");
-
-    User user2 = new User();
-    user2.setName("Guachimingo");
-    user2.setLastname("Torres");
-
-    User user3 = new User();
-    user3.setName("Patana");
-    user3.setLastname("Murillo");
-    user3.setEmail("patanam@gmail.com");
-
-    // Uncomment to validate when users is empty.
-    // List<User> users = new ArrayList<>();
-    // Comment to validate when users contains elements.
-    List<User> users = Arrays.asList(user1, user2, user3);
+    List<User> users = Arrays.asList(
+      new User("Guaripolo", "Arrazola", "guaripoloa@gmail.com"),
+      new User("Guachimingo", "Torres"),
+      new User("Patana", "Murillo", "patanam@gmail.com"),
+    );
 
     model.addAttribute("users", users);
     
