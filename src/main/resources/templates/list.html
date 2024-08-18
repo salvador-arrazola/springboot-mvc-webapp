@@ -9,7 +9,7 @@
   
   <h1 th:text="${title}"></h1>
   <div th:if="${users.isEmpty()}" th:text="${'There are no users to show.'}"></div>
-  <table>
+  <table th:if="${!users.isEmpty()}">
     <thead>
       <tr>
         <th>NAME</th>
