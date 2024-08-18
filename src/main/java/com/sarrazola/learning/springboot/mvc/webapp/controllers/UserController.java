@@ -1,6 +1,5 @@
 package com.sarrazola.learning.springboot.mvc.webapp.controllers;
 
-// import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class UserController {
     List<User> users = Arrays.asList(
       new User("Guaripolo", "Arrazola", "guaripoloa@gmail.com"),
       new User("Guachimingo", "Torres"),
-      new User("Patana", "Murillo", "patanam@gmail.com"),
+      new User("Patana", "Murillo", "patanam@gmail.com")
     );
 
     model.addAttribute("users", users);
