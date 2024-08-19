@@ -27,6 +27,12 @@ public class RequestParamsController {
     // return new ParamDto(message != null ? message : "No message received.");
     return new ParamDto(message);
   }
+
+  @GetMapping("/bar")
+  public ParamDto bar(@RequestParam String message, @RequestParam Integer code) {
+      return new ParamDto(message, code);
+  }
+  
   
 
 }
