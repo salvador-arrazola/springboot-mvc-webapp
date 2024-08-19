@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.sarrazola.learning.springboot.mvc.webapp.models.User;
 
@@ -33,15 +34,25 @@ public class UserController {
 
     model.addAttribute("title", "Users List:");
 
-    List<User> users = Arrays.asList(
+    // Users can be defines as a model attribute, so it can be used in multiple times. 
+    // List<User> users = Arrays.asList(
+    //   new User("Guaripolo", "Arrazola", "guaripoloa@gmail.com"),
+    //   new User("Guachimingo", "Torres"),
+    //   new User("Patana", "Murillo", "patanam@gmail.com")
+    // );
+    // model.addAttribute("users", users);
+    
+    return "list";
+  }
+
+  // Model attribute allow us to define a model that can be used multiple times.
+  @ModelAttribute("users")
+  public List<User> getUsersModel() {
+    return Arrays.asList(
       new User("Guaripolo", "Arrazola", "guaripoloa@gmail.com"),
       new User("Guachimingo", "Torres"),
       new User("Patana", "Murillo", "patanam@gmail.com")
     );
-
-    model.addAttribute("users", users);
-    
-    return "list";
   }
 
 }
