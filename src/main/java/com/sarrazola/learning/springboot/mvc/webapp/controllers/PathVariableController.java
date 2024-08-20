@@ -1,11 +1,16 @@
 package com.sarrazola.learning.springboot.mvc.webapp.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sarrazola.learning.springboot.mvc.webapp.models.dto.ParamDto;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -25,6 +30,14 @@ public class PathVariableController {
   }
 
   // REMINDER: Do not forget to put the value for path variables after the last slash (/) when
-  // opening the api URL. 
+  // opening the api URL.
 
+  @GetMapping("/mix/{id}/{product}")
+  public Map<String, Object> mix(@PathVariable Long id, @PathVariable String product) {
+    Map<String, Object> json = new HashMap<>();
+    json.put("id", id);
+    json.put("product", product);
+    return json;
+  }
+  
 }
