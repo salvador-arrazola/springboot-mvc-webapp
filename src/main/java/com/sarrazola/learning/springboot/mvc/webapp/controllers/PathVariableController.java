@@ -5,9 +5,12 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sarrazola.learning.springboot.mvc.webapp.models.User;
 import com.sarrazola.learning.springboot.mvc.webapp.models.dto.ParamDto;
 
 
@@ -31,12 +34,20 @@ public class PathVariableController {
   // REMINDER: Do not forget to put the value for path variables after the last slash (/) when
   // opening the api URL.
 
-  @GetMapping("/mix/{id}/{product}")
-  public Map<String, Object> mix(@PathVariable Long id, @PathVariable String product) {
+  @GetMapping("/mix/{product}/{id}")
+  public Map<String, Object> mix(@PathVariable String product, @PathVariable Long id) {
     Map<String, Object> json = new HashMap<>();
-    json.put("id", id);
     json.put("product", product);
+    json.put("id", id);
     return json;
   }
+
+  @PostMapping("/create")
+  public User create(@RequestBody User user) {
+    // Do something with parameter user (store it in the database).
+    user.setName(user.getName().toUpperCase());
+    return user;
+  }
+
   
 }
