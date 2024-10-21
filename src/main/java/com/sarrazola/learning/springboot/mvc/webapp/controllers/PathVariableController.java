@@ -59,5 +59,15 @@ public class PathVariableController {
     json.put("List", list);
     return json;
   }
+
+  @GetMapping("/values1")
+  public Map<String, Object> values1(
+    @Value("${config.username}") String username,
+    @Value("${config.message}") String message) {
+    Map<String, Object> json = new HashMap<>();
+    json.put("Username", username);
+    json.put("Message", message);
+    return json;
+  }
   
 }
