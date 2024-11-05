@@ -40,6 +40,15 @@ public class PathVariableController {
   // @Value("#{'${config.list}'}")  // A single String.
   private String listString;
 
+  @Value("#{${config.map}}")
+  private Map<String, Object> map;  // Inject a map from a property.
+  
+  @Value("#{${config.map}.product}")  // Inject a map value from a property.
+  private String product;
+  
+  @Value("#{${config.map}.price}")  // Inject a map value from a property.
+  private Long price;
+
   @GetMapping("/baz/{message}")
   public ParamDto baz(@PathVariable String message) {
       return new ParamDto(message);
@@ -69,6 +78,9 @@ public class PathVariableController {
     json.put("List", list);
     json.put("ListSpEL", listSpEL);
     json.put("ListString", listString);
+    json.put("Map", map);
+    json.put("Product", product);
+    json.put("Price", price);
     return json;
   }
 
