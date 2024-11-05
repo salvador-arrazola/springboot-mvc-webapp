@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,10 +51,13 @@ public class PathVariableController {
   @Value("#{${config.map}.price}")  // Inject a map value from a property.
   private Long price;
 
+  @Autowired
+  private Environment env;
+
   @GetMapping("/baz/{message}")
   public ParamDto baz(@PathVariable String message) {
-      return new ParamDto(message);
-    }
+    return new ParamDto(message);
+  }
 
   @GetMapping("/mix/{product}/{id}")
   public Map<String, Object> mix(@PathVariable String product, @PathVariable Long id) {
@@ -75,6 +80,9 @@ public class PathVariableController {
     json.put("Code", code);
     json.put("Username", username);
     json.put("Message", message);
+    json.put("Code2", env.getProperty("config.code", Integer.class));
+    // json.put("Code2", Integer.valueOf(env.getProperty("config.code"))); 
+    json.put("Message2", env.getProperty("config.message"));
     json.put("List", list);
     json.put("ListSpEL", listSpEL);
     json.put("ListString", listString);
