@@ -1,6 +1,7 @@
 package com.sarrazola.learning.springboot.mvc.webapp.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +29,8 @@ public class PathVariableController {
   private String message;
 
   @Value("${config.list}")
-  private String[] list;
+  private List<String> list;
+  // private String[] list;
 
   @GetMapping("/baz/{message}")
   public ParamDto baz(@PathVariable String message) {
