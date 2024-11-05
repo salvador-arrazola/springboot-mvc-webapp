@@ -29,15 +29,23 @@ public class PathVariableController {
   private String message;
 
   @Value("${config.list}")
-  private List<String> list;
-  // private String[] list;
+  private List<String> list;  // Property as List.
+  // private String[] list;   // Property as array.
+
+  @Value("#{'${config.list}'.toUpperCase().split(',')}")
+  // @Value("#{'${config.list}'.split(',')}")
+  private List<String> listSpEL;
+
+  @Value("#{'${config.list}'.toUpperCase()}") // Calling a String method.
+  // @Value("#{'${config.list}'}")  // A single String.
+  private String listString;
 
   @GetMapping("/baz/{message}")
   public ParamDto baz(@PathVariable String message) {
       return new ParamDto(message);
     }
 
-    @GetMapping("/mix/{product}/{id}")
+  @GetMapping("/mix/{product}/{id}")
   public Map<String, Object> mix(@PathVariable String product, @PathVariable Long id) {
     Map<String, Object> json = new HashMap<>();
     json.put("product", product);
@@ -59,6 +67,8 @@ public class PathVariableController {
     json.put("Username", username);
     json.put("Message", message);
     json.put("List", list);
+    json.put("ListSpEL", listSpEL);
+    json.put("ListString", listString);
     return json;
   }
 
