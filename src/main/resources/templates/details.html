@@ -6,18 +6,40 @@
   <title th:text="${title}">Document Title</title>
 </head>
 <body>
+
   <h1 th:text="${greeting}">Greeting</h1>
 
   <h2 th:text="${'Welcome ' + user.name +' '+ user.lastname +' !!!'}"></h2>
 
-  <!-- Shows "Email: null" when email is not defined. -->
-  <!-- <h3 th:text="${'Email: ' + user.email}"></h3> -->
-  <!-- Use Thymeleaf "if" to validate if email is defined. -->
-  <!-- <h3 th:if="${user.email != null}" th:text="${'Email: ' + user.email}"></h3> -->
-  <!-- Shorter version. -->
   <h3 th:if="${user.email}" th:text="${'Email: ' + user.email}"></h3>
-  <!-- Show message due email is not defined (else alternative). -->
   <h3 th:if="${user.email == null}" th:text="${'Email not set.'}"></h3>
+
+  <a th:href="@{/list}">Ver Listado</a>
+  <br>
+
+  <!-- Toma el valor del parametro de la URL desde una variable: -->
+  <a th:href="@{'/api/params/foo?msg='+ ${title}}">Envia el "title" como parametro a foo</a>
+  <br>
+
+  <!-- Toma el valor del parametro de la URL desde una cadena: -->
+  <!-- <a th:href="@{/api/params/foo?msg=Hola Mundo !!!}">Envia la frase "Hola Mundo !!!" como parametro a foo</a> -->
+  <!-- Usando la sintaxis de Thymeleaf para el paso de parametros:' -->
+  <a th:href="@{/api/params/foo(msg='Hola Mundo !!!')}">Envia la frase "Hola Mundo !!!" como parametro a foo</a>
+  <br>
+
+  <!-- Envia 2 parametros: -->
+  <!-- <a th:href="@{/api/params/bar?message=Hola Mundo !!!&code=125123}">Envia dos parametros a bar</a> -->
+  <!-- Usando la sintaxis de Thymeleaf para el paso de parametros:' -->
+  <a th:href="@{/api/params/bar(message='Hola Mundo !!!', code=125123)}">Envia dos parametros a bar</a>
+  <br>
+
+  <!-- Path variable enviando un string: -->
+  <a th:href="@{/api/var/baz/Hola Mundo !!!}">Envia un string como path variable a var/baz</a>
+  <br>
+  
+  <!-- Path variable enviando una variable: -->
+  <a th:href="@{'/api/var/baz/'+ ${title}}">Envia el valor de "title" como path variable a var/baz</a>
+  <br>
 
 </body>
 </html>
